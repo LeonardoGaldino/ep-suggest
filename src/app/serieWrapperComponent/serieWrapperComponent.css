@@ -1,0 +1,23 @@
+.seriePic{
+    cursor: pointer;
+    width: inherit;
+    height: 210px;
+    border-radius: 25%;
+}
+
+.seriePic:hover{
+    opacity: 0.5;
+}
+
+#cardPanelWrapper{
+    background-color: #f5f5f5;
+    max-height: 400px;
+}
+
+.textCentered{
+    text-align:center;
+}
+
+.spoilerAlert{
+    color: red;
+}
