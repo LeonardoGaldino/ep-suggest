@@ -14,20 +14,23 @@ declare var $:any;
     @Input() public title;
     @Input() public picName;
     @Input() public index;
-    fetched = false;
-    title_serie = '';
-    episode = '';
-    season = '';
-    spoiler = '';
-    awards = '';
-    year = '';
-    time = '';
-    grade = '';
-    more = '';
-    poster = '';
+    public control = 0;
+    public data = {
+      title_serie: '',
+      episode: '',
+      season: '',
+      spoiler: '',
+      awards: '',
+      year: '',
+      time: '',
+      grade: '',
+      more: '',
+      poster: ''
+    };
+
 
     error_handling(err):void{
-      console.log(err);
+      this.control = 2;
     }
 
     randomize():void{
@@ -35,7 +38,7 @@ declare var $:any;
         alert('Nome da série em branco!');
         return;
       }
-      this.fetched = false;
+      this.control = 0;
       $('#modalEpisode'+this.index).modal('open');
       this.service.getSerie(this.title).then(el => {
         if(el.ok){
@@ -48,7 +51,7 @@ declare var $:any;
     }
 
     randomize_again():void{
-      this.fetched = false;
+      this.control = 0;
       this.service.getSerie(this.title).then(el => {
         if(el.ok){
           el = el.json();
@@ -60,17 +63,17 @@ declare var $:any;
     }
 
     update_attrs(el):void{
-      this.title_serie = el.title;
-      this.episode = el.ep;
-      this.season = el.season;
-      this.awards = el.awards;
-      this.spoiler = el.spoiler;
-      this.year = el.year;
-      this.time = el.time;
-      this.grade = el.grade;
-      this.more = el.more;
-      this.poster = el.poster;
-      this.fetched = true;
+      this.data.title_serie = el.title;
+      this.data.episode = el.ep;
+      this.data.season = el.season;
+      this.data.awards = el.awards;
+      this.data.spoiler = el.spoiler;
+      this.data.year = el.year;
+      this.data.time = el.time;
+      this.data.grade = el.grade;
+      this.data.more = el.more;
+      this.data.poster = el.poster;
+      this.control = 1;
     }
     
 }

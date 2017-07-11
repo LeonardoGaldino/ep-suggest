@@ -1,0 +1,51 @@
+<div *ngIf="control==1" class="row full-height no-bottom">
+    <div class="col s8 full-height">
+        <ul class="full-height no-bottom">
+            <li>
+                Nome: <strong>{{data.title_serie}}</strong>  
+            </li>
+            <li>
+                Temporada: <strong>{{data.season}}</strong>
+            </li>
+            <li>
+                Episódio: <strong>{{data.episode}}</strong>
+            </li>
+            <li>
+                Duração: <strong>{{data.time}}</strong>
+            </li>
+            <li>
+                Nota: <strong>{{data.grade}}</strong>
+            </li>
+            <li>
+                Prêmios: <strong>{{data.awards}}</strong>
+            </li>
+            <li>
+                Ano: <strong>{{data.year}}</strong>
+            </li>
+            <li>
+                <a class="moreInfoAnchor" href="{{data.more}}"> Mais informações </a>
+            </li>
+            <li>
+                <ul class="collapsible" data-collapsible="expandable">
+                    <li>
+                        <div class="collapsible-header"><i class="spoilerAlert material-icons">info_outline</i>Enredo (spoiler alert)</div>
+                        <div class="collapsible-body"><span>{{data.spoiler}}</span></div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col s4 full-height">
+        <img src="{{data.poster}}" class="seriePoster full-height" alt="Poster de {{data.title}}">
+    </div>
+</div>
+<div id="loadingWrapper" *ngIf="control==0" class="textCentered">
+    <img src="assets/loading.gif" alt="GIF carregamento" />
+    <h5>
+        Estamos buscando o seu episódio! :)
+    </h5>
+</div>
+<div *ngIf="control==2">
+    <h3> Ocorreu um erro! :( </h3>
+    <h5> Busque novamente </h5>
+</div>

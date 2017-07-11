@@ -34,20 +34,23 @@ export class AppComponent implements AfterViewChecked {
       title: 'Family guy',
       picName: 'familyguy.png'
     }];
-    fetched = false;
-    title_serie = '';
-    episode = '';
-    season = '';
-    awards = '';
-    spoiler = '';
-    grade = '';
-    year = '';
-    time = '';
-    poster = '';
-    more = '';
+    public control = 0;
+    public data = {
+      title_serie: '',
+      episode: '',
+      season: '',
+      awards: '',
+      spoiler: '',
+      grade: '',
+      year: '',
+      time: '',
+      poster: '',
+      more: ''
+    };
+
 
     error_handling(el):void{
-      console.log(el);
+      this.control = 2;
     }
 
     randomize(serie_name):void{
@@ -56,7 +59,7 @@ export class AppComponent implements AfterViewChecked {
         return;
       }
       $('#modalEpisode').modal('open');
-      this.fetched = false;
+      this.control = 0;
       this.service.getSerie(serie_name).then(el => {
         if(el.ok){
           el = el.json();
@@ -68,7 +71,7 @@ export class AppComponent implements AfterViewChecked {
     }
 
     randomize_again(serie_name):void{
-      this.fetched = false;
+      this.control = 0;
       this.service.getSerie(serie_name).then(el => {
         if(el.ok){
           el = el.json();
@@ -80,17 +83,17 @@ export class AppComponent implements AfterViewChecked {
     }
 
     update_attrs(el):void{
-      this.title_serie = el.title;
-      this.episode = el.ep;
-      this.season = el.season;
-      this.awards = el.awards;
-      this.spoiler = el.spoiler;
-      this.year = el.year;
-      this.time = el.time;
-      this.grade = el.grade;
-      this.more = el.more;
-      this.poster = el.poster;
-      this.fetched = true;
+      this.data.title_serie = el.title;
+      this.data.episode = el.ep;
+      this.data.season = el.season;
+      this.data.awards = el.awards;
+      this.data.spoiler = el.spoiler;
+      this.data.year = el.year;
+      this.data.time = el.time;
+      this.data.grade = el.grade;
+      this.data.more = el.more;
+      this.data.poster = el.poster;
+      this.control = 1;
     }
 
     ngAfterViewChecked(){

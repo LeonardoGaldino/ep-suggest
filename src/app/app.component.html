@@ -50,53 +50,7 @@
   <!-- Modal Structure -->
   <div id="modalEpisode" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <div *ngIf="fetched" class="row full-height no-bottom">
-        <div class="col s8 full-height">
-          <ul class="full-height no-bottom">
-            <li>
-              Nome: <strong>{{title_serie}}</strong>
-            </li>
-            <li>
-              Temporada: <strong>{{season}}</strong>
-            </li>
-            <li>
-              Episódio: <strong>{{episode}}</strong>
-            </li>
-            <li>
-              Duração: <strong>{{time}}</strong>
-            </li>
-            <li>
-              Nota: <strong>{{grade}}</strong>
-            </li>
-            <li>
-              Prêmios: <strong>{{awards}}</strong>
-            </li>
-            <li>
-              Ano: <strong>{{year}}</strong>
-            </li>
-            <li>
-              <a class="moreInfoAnchor" *ngIf="fetched" href="{{more}}"> Mais informações </a>
-            </li>
-            <li>
-              <ul class="collapsible" data-collapsible="expandable">
-                <li>
-                  <div class="collapsible-header"><i class="spoilerAlert material-icons">info_outline</i>Enredo (spoiler alert)</div>
-                  <div class="collapsible-body"><span>{{spoiler}}</span></div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div *ngIf="fetched" class="col s4 full-height">
-            <img src="{{poster}}" class="seriePoster full-height" alt="Poster da {{title_serie}}">
-        </div>
-      </div>
-      <div id="loadingWrapper" *ngIf="!fetched" class="textCentered">
-        <img src="assets/loading.gif" alt="GIF carregamento" />
-        <h5>
-          Se estiver demorando, busque novamente! :)
-        </h5>
-      </div>
+      <response-handler control="{{control}}" [data]="data"> </response-handler>
     </div>
     <div class="modal-footer">
       <a (click)="randomize_again(serieNameInput.value)" class="waves-effect waves-green btn-flat left">Outro</a>
