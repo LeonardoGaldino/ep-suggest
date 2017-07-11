@@ -12,7 +12,7 @@ export class AppService{
         let params: URLSearchParams = new URLSearchParams();
         params.set('serie_name', serie_name);
         return this.http.get('http://localhost:8000/random', { search: params } )
-        .toPromise().then((res)=>{ return res.json(); }).catch(err => { console.log(err); });
+        .toPromise().then((res)=>{ return res; }).catch(err => { return err; });
     }
 }
 

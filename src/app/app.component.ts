@@ -46,7 +46,11 @@ export class AppComponent implements AfterViewChecked {
     poster = '';
     more = '';
 
-    randomize(serie_name):any{
+    error_handling(el):void{
+      console.log(el);
+    }
+
+    randomize(serie_name):void{
       if(serie_name === ''){
         alert('Nome da série em branco!');
         return;
@@ -54,43 +58,39 @@ export class AppComponent implements AfterViewChecked {
       $('#modalEpisode').modal('open');
       this.fetched = false;
       this.service.getSerie(serie_name).then(el => {
-        if(el.Response === 'True'){
-          this.title_serie = el.title;
-          this.episode = el.ep;
-          this.season = el.season;
-          this.awards = el.awards;
-          this.spoiler = el.spoiler;
-          this.year = el.year;
-          this.time = el.time;
-          this.grade = el.grade;
-          this.more = el.more;
-          this.poster = el.poster;
-          this.fetched = true;
+        if(el.ok){
+          el = el.json();
+          this.update_attrs(el);
         }
         else
-          alert(el.error);
+          this.error_handling(el);
       }).catch(err => console.log(err));
     }
 
-    randomize_again(serie_name):any{
+    randomize_again(serie_name):void{
       this.fetched = false;
       this.service.getSerie(serie_name).then(el => {
-        if(el.Response === 'True'){
-          this.title_serie = el.title;
-          this.episode = el.ep;
-          this.season = el.season;
-          this.awards = el.awards;
-          this.spoiler = el.spoiler;
-          this.year = el.year;
-          this.time = el.time;
-          this.grade = el.grade;
-          this.more = el.more;
-          this.poster = el.poster;
-          this.fetched = true;
+        if(el.ok){
+          el = el.json();
+          this.update_attrs(el);
         }
         else
-          alert(el.error);
+          this.error_handling(el);
       }).catch(err => console.log(err));
+    }
+
+    update_attrs(el):void{
+      this.title_serie = el.title;
+      this.episode = el.ep;
+      this.season = el.season;
+      this.awards = el.awards;
+      this.spoiler = el.spoiler;
+      this.year = el.year;
+      this.time = el.time;
+      this.grade = el.grade;
+      this.more = el.more;
+      this.poster = el.poster;
+      this.fetched = true;
     }
 
     ngAfterViewChecked(){
