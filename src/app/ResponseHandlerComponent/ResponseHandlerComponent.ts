@@ -9,7 +9,5 @@ import { Component, OnChanges, Input } from '@angular/core'
     @Input() public control;
 
     ngOnChanges():void{
-        console.log(this.data);
-        console.log(this.control);
     }
 }

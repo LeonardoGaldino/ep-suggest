@@ -23,6 +23,9 @@
                 Ano: <strong>{{data.year}}</strong>
             </li>
             <li>
+                <a *ngIf="data.netflixId" target="_blank" class="moreInfoAnchor" href="http://netflix.com/watch/{{data.netflixId}}"> Link Netflix </a>
+            </li>
+            <li>
                 <a class="moreInfoAnchor" href="{{data.more}}"> Mais informações </a>
             </li>
             <li>

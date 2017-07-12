@@ -45,7 +45,8 @@ export class AppComponent implements AfterViewChecked {
       year: '',
       time: '',
       poster: '',
-      more: ''
+      more: '',
+      netflixId: ''
     };
 
 
@@ -67,7 +68,7 @@ export class AppComponent implements AfterViewChecked {
         }
         else
           this.error_handling(el);
-      }).catch(err => console.log(err));
+      }).catch(err => this.error_handling(err));
     }
 
     randomize_again(serie_name):void{
@@ -79,7 +80,7 @@ export class AppComponent implements AfterViewChecked {
         }
         else
           this.error_handling(el);
-      }).catch(err => console.log(err));
+      }).catch(err => this.error_handling(err));
     }
 
     update_attrs(el):void{
@@ -93,6 +94,7 @@ export class AppComponent implements AfterViewChecked {
       this.data.grade = el.grade;
       this.data.more = el.more;
       this.data.poster = el.poster;
+      this.data.netflixId = el.netflixId;
       this.control = 1;
     }
 

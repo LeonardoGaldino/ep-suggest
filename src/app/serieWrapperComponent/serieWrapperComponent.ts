@@ -25,7 +25,8 @@ declare var $:any;
       time: '',
       grade: '',
       more: '',
-      poster: ''
+      poster: '',
+      netflixId: ''
     };
 
 
@@ -47,7 +48,7 @@ declare var $:any;
         }
         else
           this.error_handling(el);
-      }).catch(err => console.log(err));
+      }).catch(err => this.error_handling(err));
     }
 
     randomize_again():void{
@@ -59,7 +60,7 @@ declare var $:any;
         }
         else
           this.error_handling(el);
-      }).catch(err => console.log(err));
+      }).catch(err => this.error_handling(err));
     }
 
     update_attrs(el):void{
@@ -73,6 +74,7 @@ declare var $:any;
       this.data.grade = el.grade;
       this.data.more = el.more;
       this.data.poster = el.poster;
+      this.data.netflixId = el.netflixId;
       this.control = 1;
     }
     
