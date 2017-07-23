@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AppService } from '../app.service';
 
-declare var Materialize:any;
 declare var $:any;
 
 @Component({
@@ -32,6 +31,7 @@ declare var $:any;
 
     error_handling(err):void{
       this.control = 2;
+      console.log(err);
     }
 
     randomize():void{
@@ -42,10 +42,9 @@ declare var $:any;
       this.control = 0;
       $('#modalEpisode'+this.index).modal('open');
       this.service.getSerie(this.title).then(el => {
-        if(el.ok){
-          el = el.json();
+        el = el.json();
+        if(el.Response)
           this.update_attrs(el);
-        }
         else
           this.error_handling(el);
       }).catch(err => this.error_handling(err));
@@ -54,10 +53,9 @@ declare var $:any;
     randomize_again():void{
       this.control = 0;
       this.service.getSerie(this.title).then(el => {
-        if(el.ok){
-          el = el.json();
+        el = el.json();
+        if(el.Response)
           this.update_attrs(el);
-        }
         else
           this.error_handling(el);
       }).catch(err => this.error_handling(err));

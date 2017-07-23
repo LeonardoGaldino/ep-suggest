@@ -52,6 +52,7 @@ export class AppComponent implements AfterViewChecked {
 
     error_handling(el):void{
       this.control = 2;
+      console.log(el);
     }
 
     randomize(serie_name):void{
@@ -62,10 +63,9 @@ export class AppComponent implements AfterViewChecked {
       $('#modalEpisode').modal('open');
       this.control = 0;
       this.service.getSerie(serie_name).then(el => {
-        if(el.ok){
-          el = el.json();
+        el = el.json();
+        if(el.Response)
           this.update_attrs(el);
-        }
         else
           this.error_handling(el);
       }).catch(err => this.error_handling(err));
@@ -74,10 +74,9 @@ export class AppComponent implements AfterViewChecked {
     randomize_again(serie_name):void{
       this.control = 0;
       this.service.getSerie(serie_name).then(el => {
-        if(el.ok){
-          el = el.json();
+        el = el.json();
+        if(el.Response)
           this.update_attrs(el);
-        }
         else
           this.error_handling(el);
       }).catch(err => this.error_handling(err));
