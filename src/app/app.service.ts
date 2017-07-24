@@ -11,7 +11,7 @@ export class AppService{
     getSerie(serie_name): Promise<any> {
         let params: URLSearchParams = new URLSearchParams();
         params.set('serie_name', serie_name);
-        return this.http.get('api.episodios.net/random2/', { search: params } )
+        return this.http.get('http://api.episodios.net/random2', { search: params } )
         .toPromise().then((res)=>{ return res; }).catch(err => { return err; });
     }
 }
