@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, AfterViewInit } from '@angular/core'
+import { Component, Input  } from '@angular/core'
 
 declare var $:any;
 
@@ -6,14 +6,8 @@ declare var $:any;
     selector: 'response-handler',
     templateUrl: 'ResponseHandlerComponent.html',
     styleUrls: ['ResponseHandlerComponent.css']
-}) export class ResponseHandlerComponent implements OnChanges, AfterViewInit{
+}) export class ResponseHandlerComponent {
     @Input() public data;
     @Input() public control;
 
-    ngAfterViewInit():void{
-        $('.collapsible').collapsible();
-    }
-
-    ngOnChanges():void{
-    }
 }

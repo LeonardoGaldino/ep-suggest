@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppService } from './app.service';
 
 declare var $: any;
@@ -10,7 +10,7 @@ declare var Materialize: any;
   styleUrls: ['./app.component.css'],
   providers: [AppService]
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent {
     constructor(private service: AppService) { }
     @ViewChild('serieNameInput') inp:ElementRef; 
     series = [{
@@ -52,7 +52,7 @@ export class AppComponent implements AfterViewChecked {
 
 
     error_handling(el):void{
-      this.control = 2;
+      this.control = (el.status === '404' ? 3 : 2);
       console.log(el);
     }
 
@@ -101,10 +101,6 @@ export class AppComponent implements AfterViewChecked {
       this.data.poster = el.poster;
       this.data.netflixId = el.netflixId;
       this.control = 1;
-    }
-
-    ngAfterViewChecked(){
-      $('.collapsible').collapsible();
     }
 
 }
