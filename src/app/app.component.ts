@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked } from '@angular/core';
+import { Component, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { AppService } from './app.service';
 
 declare var $: any;
@@ -12,6 +12,7 @@ declare var Materialize: any;
 })
 export class AppComponent implements AfterViewChecked {
     constructor(private service: AppService) { }
+    @ViewChild('serieNameInput') inp:ElementRef; 
     series = [{
       title: 'Dexter',
       picName: 'dexter.png'
@@ -80,6 +81,11 @@ export class AppComponent implements AfterViewChecked {
         else
           this.error_handling(el);
       }).catch(err => this.error_handling(err));
+    }
+
+    keyDownListener(e):void{
+      if(e.keyCode == 13)
+        this.randomize(this.inp.nativeElement.value);
     }
 
     update_attrs(el):void{
