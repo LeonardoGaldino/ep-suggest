@@ -10,7 +10,7 @@ declare var Materialize: any;
   styleUrls: ['./app.component.css'],
   providers: [AppService]
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent{
     constructor(private service: AppService) { }
     @ViewChild('serieNameInput') inp:ElementRef; 
     series = [{
@@ -102,11 +102,5 @@ export class AppComponent implements AfterViewChecked {
       this.data.netflixId = el.netflixId;
       this.control = 1;
     }
-
-    ngAfterViewChecked(){
-        $('.collapsible').collapsible();
-    }
-
-
 
 }

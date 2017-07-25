@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input } from '@angular/core';
+
 
 declare var $:any;
 
@@ -9,4 +10,10 @@ declare var $:any;
 }) export class ResponseHandlerComponent {
     @Input() public data;
     @Input() public control;
+    @Input() public title;
+    
+
+    public openCollapsible(){
+        $(`#collapsible${this.title}`).collapsible('open', 0);
+    }
 }

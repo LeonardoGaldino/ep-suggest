@@ -29,7 +29,7 @@
                 <a class="moreInfoAnchor" href="{{data.more}}"> Mais informações </a>
             </li>
             <li>
-                <ul class="collapsible" data-collapsible="expandable">
+                <ul (click)="openCollapsible()" id="collapsible{{title}}" class="collapsible" data-collapsible="expandable">
                     <li>
                         <div class="collapsible-header"><i class="spoilerAlert material-icons">info_outline</i>Enredo (spoiler alert)</div>
                         <div class="collapsible-body"><span>{{data.spoiler}}</span></div>
