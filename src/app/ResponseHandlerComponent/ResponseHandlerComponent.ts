@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 
 declare var $:any;
@@ -7,11 +7,20 @@ declare var $:any;
     selector: 'response-handler',
     templateUrl: 'ResponseHandlerComponent.html',
     styleUrls: ['ResponseHandlerComponent.css']
-}) export class ResponseHandlerComponent {
+}) export class ResponseHandlerComponent implements OnChanges{
     @Input() public data;
     @Input() public control;
     @Input() public title;
     
+    private eraseSpaces(inp):string{
+        if(!inp)
+            return '';
+        return inp.split(' ').join('');
+    }
+
+    ngOnChanges():void{
+        this.title = this.eraseSpaces(this.title);
+    }
 
     public openCollapsible(){
         $(`#collapsible${this.title}`).collapsible('open', 0);
