@@ -14,8 +14,8 @@ export class AppComponent {
     constructor(private service: AppService) { }
     @ViewChild('serieNameInput') inp:ElementRef; 
     series = [{
-      title: 'Dexter',
-      picName: 'dexter.png'
+      title: 'Skins',
+      picName: 'skins.jpg'
     },{
       title: 'How I met your mother',
       picName: 'HIMYM.png'
@@ -32,8 +32,8 @@ export class AppComponent {
       title: 'Modern Family',
       picName: 'modernfamily.png'
     },{
-      title: 'Family guy',
-      picName: 'familyguy.png'
+      title: 'Orange is the new black',
+      picName: 'otnb.jpg'
     }];
     public control = 0;
     public data = {
