@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { AppService } from './app.service';
 
 declare var $: any;
@@ -10,7 +10,7 @@ declare var Materialize: any;
   styleUrls: ['./app.component.css'],
   providers: [AppService]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewChecked {
     constructor(private service: AppService) { }
     @ViewChild('serieNameInput') inp:ElementRef; 
     series = [{
@@ -102,5 +102,11 @@ export class AppComponent {
       this.data.netflixId = el.netflixId;
       this.control = 1;
     }
+
+    ngAfterViewChecked(){
+        $('.collapsible').collapsible();
+    }
+
+
 
 }
